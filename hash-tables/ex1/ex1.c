@@ -11,14 +11,18 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
   // YOUR CODE HEREe
   // key would be the element of the array
   // the value would be the index
+  Answer *ans = malloc(sizeof(Answer));
+
   for (int i=0; i<length; i++) {
-      int key = weights[i];
-      int value = i;
-      hash_table_insert(ht, key, value);
+
+    if (hash_table_retrieve(ht, limit-weights[i]) != -1) {
+      
+      ans->index_1 = i;
+      ans->index_2 = hash_table_retrieve(ht, limit-weights[i]);
+      return ans;
+    }
+    hash_table_insert(ht, weights[i], i); 
   }
-
-
-  
 
   return NULL;
 }
