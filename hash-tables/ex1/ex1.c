@@ -1,13 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "hashtable.c"
 #include "hashtable.h"
 #include "ex1.h"
+
 
 Answer *get_indices_of_item_weights(int *weights, int length, int limit)
 {
   HashTable *ht = create_hash_table(16);
-
   // YOUR CODE HEREe
+  // key would be the element of the array
+  // the value would be the index
+  for (int i=0; i<length; i++) {
+      int key = weights[i];
+      int value = i;
+      hash_table_insert(ht, key, value);
+  }
+
+
+  
 
   return NULL;
 }
